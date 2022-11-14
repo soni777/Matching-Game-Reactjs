@@ -1,0 +1,16 @@
+.tab {
+  margin: 0px 10px;
+}
+
+.button {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  font-size: 22px;
+  color: #ffffff;
+}
+
+.active {
+  border-bottom: 2px solid #fec653;
+}
