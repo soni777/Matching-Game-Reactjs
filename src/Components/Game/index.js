@@ -152,14 +152,14 @@ class Game extends Component {
     this.timerID = setInterval(this.tick, 1000)
   }
 
-  tick = () => {
+  tick = async () => {
     const {gameOn, seconds} = this.state
     if (gameOn) {
-      if (seconds > 0) {
+      if (seconds > 1) {
         this.setState(prevState => ({seconds: prevState.seconds - 1}))
       } else {
+        await this.setState({gameOn: false, seconds: 0})
         clearInterval(this.timerID)
-        this.setState({gameOn: false})
       }
     } else {
       clearInterval(this.timerID)
