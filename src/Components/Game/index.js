@@ -166,6 +166,10 @@ class Game extends Component {
     }
   }
 
+  componentWillUnmount = () => {
+    clearInterval(this.timerID)
+  }
+
   render() {
     const {gameOn} = this.state
     return (

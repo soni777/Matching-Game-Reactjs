@@ -68,7 +68,7 @@
 }
 
 .endgame-card {
-  background-image: url('https://assets.ccbp.in/frontend/react-js/match-game-score-card-sm-bg.png');
+  background-image: url('https://assets.ccbp.in/frontend/react-js/match-game-score-card-lg-bg.png');
   background-size: cover;
   display: flex;
   flex-direction: column;
@@ -78,9 +78,24 @@
   width: 500px;
 }
 
-@media (min-width: 768px) {
+@media (max-width: 767px) {
+  .navbar {
+    padding: 0px 15px;
+  }
+  .logo {
+    height: 28px;
+  }
+
   .endgame-card {
-    background-image: url('https://assets.ccbp.in/frontend/react-js/match-game-score-card-lg-bg.png');
+    background-image: url('https://assets.ccbp.in/frontend/react-js/match-game-score-card-sm-bg.png');
+    width: 300px;
+    height: 480px;
+  }
+  .image {
+    height: 200px;
+  }
+  .imagesList {
+    width: 400px;
   }
 }
 
