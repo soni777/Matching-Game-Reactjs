@@ -109,8 +109,15 @@ class Game extends Component {
     )
   }
 
-  onClickPlayagain = async () => {
-    await this.setState({score: 0, seconds: 60, gameOn: true})
+  onClickPlayagain = () => {
+    const {tabsList, imagesList} = this.props
+    this.setState({
+      score: 0,
+      seconds: 60,
+      activeTab: tabsList[0].tabId,
+      currentImageUrl: imagesList[0].imageUrl,
+      gameOn: true,
+    })
     this.startGame()
   }
 
@@ -121,7 +128,7 @@ class Game extends Component {
   getRandomImage = () => {
     const {imagesList} = this.props
     const url =
-      imagesList[Math.ceil(Math.random() * imagesList.length - 1)].imageUrl
+      imagesList[Math.floor(Math.random() * imagesList.length - 1)].imageUrl
     return url
   }
 
@@ -139,9 +146,9 @@ class Game extends Component {
     }
   }
 
-  componentDidMount = async () => {
+  componentDidMount = () => {
     const {tabsList, imagesList} = this.props
-    await this.setState({
+    this.setState({
       activeTab: tabsList[0].tabId,
       currentImageUrl: imagesList[0].imageUrl,
     })
@@ -152,13 +159,13 @@ class Game extends Component {
     this.timerID = setInterval(this.tick, 1000)
   }
 
-  tick = async () => {
+  tick = () => {
     const {gameOn, seconds} = this.state
     if (gameOn) {
-      if (seconds > 1) {
+      if (seconds >= 1) {
         this.setState(prevState => ({seconds: prevState.seconds - 1}))
       } else {
-        await this.setState({gameOn: false, seconds: 0})
+        this.setState({gameOn: false})
         clearInterval(this.timerID)
       }
     } else {
